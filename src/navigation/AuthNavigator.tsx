@@ -12,10 +12,18 @@ export const AuthNavigator = observer(() => {
   return (
     <AuthStack.Navigator
       initialRouteName={screens.Welcome}
-      screenOptions={{headerShown: true}}>
+      screenOptions={{headerShown: false}}>
       <AuthStack.Screen component={WelcomeScreen} name={screens.Welcome} />
-      <AuthStack.Screen component={LoginScreen} name={screens.SignIn} />
-      <AuthStack.Screen component={EmptyScreen} name={screens.SignUp} />
+      <AuthStack.Screen
+        component={LoginScreen}
+        name={screens.SignIn}
+        options={{headerShown: true}}
+      />
+      <AuthStack.Screen
+        component={EmptyScreen}
+        name={screens.SignUp}
+        options={{headerShown: true}}
+      />
     </AuthStack.Navigator>
   );
 });
