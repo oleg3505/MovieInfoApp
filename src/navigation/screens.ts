@@ -8,6 +8,8 @@ export const screens = mirror([
   'SignUp',
   'Search',
   'Profile',
+  'Home',
+  'Saved',
 
   // Navigators
   'AuthNavigator',

@@ -4,7 +4,7 @@ import {screens} from './screens';
 
 export type AppStackParamListType = {
   [screens.AuthNavigator]: NavigatorScreenParams<AuthStackParamListType>;
-  [screens.MainNavigator]: NavigatorScreenParams<MainStackParamListType>;
+  [screens.TabNavigator]: NavigatorScreenParams<TabStackParamListType>;
 };
 
 export type AuthStackParamListType = {
@@ -13,7 +13,8 @@ export type AuthStackParamListType = {
   [screens.Welcome]: undefined;
 };
 
-export type MainStackParamListType = {
-  [screens.TabNavigator]: undefined;
-  [screens.ProfileNavigator]: undefined;
+export type TabStackParamListType = {
+  [screens.Home]: undefined;
+  [screens.Profile]: undefined;
+  [screens.Saved]: undefined;
 };

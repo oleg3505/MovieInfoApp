@@ -43,6 +43,10 @@ window.server = createServer({
           data: {
             token:
               'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwZXRyb0BnbWFpbC5jb20iLCJuYW1lIjoiUGV0cm92IFBldHJvIiwiY3JlYXRlZEF0IjoiMjAyMS0wNi0zMFQxMToyOTo1OC4zNTJaIiwidXBkYXRlZEF0IjoiMjAyMS0wNi0zMFQxMToyOTo1OC4zNTJaIiwiaWF0IjoxNjI1MDUyNTk4fQ.umeB2_FZR28ISofmzsIqshP36k4Lw3aFk7VUZxNXk7U',
+            user: {
+              name: 'Petrenko Petro',
+              email: 'petro@gmail.com',
+            },
           },
         };
       } else {

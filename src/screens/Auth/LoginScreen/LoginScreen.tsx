@@ -10,9 +10,11 @@ import {
   View,
 } from 'react-native';
 import {PressableButton} from '../../../components';
+import {screens} from '../../../navigation';
 import {useAuthModel} from '../../../stores/AuthModel';
 
 const s = StyleSheet.create({
+  indicatorStyle: {paddingTop: 48},
   mainContainer: {flex: 1, padding: 24},
   textinput: {
     marginBottom: 24,
@@ -67,13 +69,15 @@ export const LoginScreen = observer(() => {
     await auth.signIn.run(data);
     if (auth.isAuthorized) {
       console.log('we can navigate');
+      // @ts-ignore
+      nav.navigate(screens.TabNavigator);
     }
   };
 
   const isSigmInInProgress = auth.signIn.inProgress;
 
   return isSigmInInProgress ? (
-    <ActivityIndicator size="large" style={{paddingTop: 48}} />
+    <ActivityIndicator size="large" style={s.indicatorStyle} />
   ) : (
     <View style={s.mainContainer}>
       <View>

@@ -7,12 +7,16 @@ import {AuthNavigator} from './AuthNavigator';
 // import {MainNavigator} from './MainNavigator';
 import type {AppStackParamListType} from './types';
 import {NavigationContainer} from '@react-navigation/native';
+import {TabNavigator} from './TabNavigator';
+import {useAuthModel} from '../stores/AuthModel';
 
 const AppStack = createNativeStackNavigator<AppStackParamListType>();
 
 // TODO: add auth logic
 
 export const AppNavigator = observer(() => {
+  const auth = useAuthModel();
+  const isAuthorized = auth.isAuthorized;
   return (
     <NavigationContainer>
       <AppStack.Navigator
@@ -22,13 +26,13 @@ export const AppNavigator = observer(() => {
           headerShown: false,
           animation: 'none',
         }}>
-        {/* {true && (
+        {isAuthorized && (
           <AppStack.Screen
-            component={MainNavigator}
-            name={screens.MainNavigator}
+            component={TabNavigator}
+            name={screens.TabNavigator}
           />
-        )} */}
-        {true && (
+        )}
+        {!isAuthorized && (
           <AppStack.Screen
             component={AuthNavigator}
             name={screens.AuthNavigator}

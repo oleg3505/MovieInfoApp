@@ -1,13 +1,11 @@
 import {getRoot, types} from 'mobx-state-tree';
 import {createThunk, model, Model} from 'mst-collection';
 import {useRoot} from './RootModel';
+import {UserModel} from './UserModel';
 
 export class Auth extends Model({
-  /**
-   * null means that status is not defined yet
-   */
   isAuthorized: types.maybeNull(types.boolean),
-  // signUpDraft: types.maybeNull(SignUpDraftModel),
+  user: types.optional(UserModel, {}),
 }) {
   authorize() {
     this.isAuthorized = true;
@@ -28,18 +26,17 @@ export class Auth extends Model({
       if (res?.data?.token) {
         this.authorize();
 
-        // await TokenService.set(res.data);
+        if (res.data.user) {
+          this.user?.setUser(res.data.user);
+        }
       }
-
-      // const viewer = getRoot(this).viewer;
-
-      // await viewer.fetch.run();
     };
   });
 
   signOut = createThunk(() => {
     return async function signOut(this: Auth) {
       this.unauthorize;
+      this.user?.clearUser();
       // @ts-ignore
       getRoot(this).reset();
     };
